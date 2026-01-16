@@ -61,7 +61,7 @@
             <label>Student Type:</label>
             <label>
                 <input type="radio" name="InternorExtern" value="extern"> Extern
-            </label><br>
+            </label>
             <label>
                 <input type="radio" name="InternorExtern" value="intern"> Intern
             </label>
@@ -83,8 +83,13 @@
 
             <br>
 
+            <form action="submit-form.php" method="POST" onsubmit="return confirm('Do you really want to submit the form?');">
             <input type="submit" value="Submit">
-            <input type="reset" value="Reset Form">
+            </form>
+
+            <form action="reset-form.php" method="POST" onsreset="return confirm('Do you really want to reset the form?');">
+            <input type="reset" value="Reset">
+            </form>
         </form>
     </div>
 
