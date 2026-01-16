@@ -29,36 +29,48 @@
             <input type="text" id="PN" name="PN"><br>
 
             
-            <label for="fruits">Choose a fruit:</label>
-            <select id="fruits" name="fruits">
-                <option value="">-- Select an option --</option>
-                <option value="apple">Apple</option>
-                <option value="banana">Banana</option>
-                <option value="mango">Mango</option>
-                <option value="orange">Orange</option>
-            </select>
+            <label for="GL">Grade level:</label>
+            <select id="GL" name="GL">
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">11</option>
+            </select><br>
 
+            <label>
+                <input type="radio" name="fruit" value="apple" checked>
+                Extern
+            </label><br>
+
+            <label>
+                <input type="radio" name="fruit" value="banana">
+                Intern
+            </label><br>
+
+            <label for="PN">Phone number:</label><br>
+            <input type="text" id="PN" name="PN"><br>
+
+            <label for="Clubs">Preferred club:</label>
+            <select id="Clubs" name="Clubs">
+                <option value="Bake club">Bake club</option>
+                <option value="Exposure">Exposure</option>
+                <option value="Kamalayan">Kamalayan</option>
+                <option value="Sightlines">Sightlines</option>
+                <option value="Sagala">Sagala</option>
+            </select><br>
+
+            <label for="textarea">Why do you want to join:</label><br>
+                <textarea id="textarea" name="textarea">
+                Enter your reason/s here...
+            </textarea><br>
     
             <input type="submit" value="Submit">
+            <input type="reset" value="Reset Form">
+
         </form>
     </div>
-
-    <script>
-
-        const dropdown = document.getElementById('fruits');
-        const output = document.getElementById('output');
-
-        // Event listener for selection change
-        dropdown.addEventListener('change', function() {
-            if (this.value) {
-                output.textContent = `You selected: ${this.options[this.selectedIndex].text}`;
-            } else {
-                output.textContent = '';
-            }
-        });
-
-    </script>
-
 
 </body>
 </html>
