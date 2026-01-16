@@ -20,12 +20,34 @@
             margin-bottom: 10px;
             padding: 6px;
             font-family: inherit;
+            border: 1px solid #ccc;
+            outline: none;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+
+        input:focus,
+        textarea:focus,
+        select:focus {
+            border-color: #4a90e2;
+            box-shadow: 0 0 5px rgba(74, 144, 226, 0.6);
+            background-color: #f9fcff;
+        }
+
+        input[type="radio"]:focus {
+            outline: 2px solid #4a90e2;
+            outline-offset: 2px;
         }
 
         .invalid {
             border: 2px solid red;
             background-color: #ffe6e6;
         }
+
+        .invalid:focus {
+            border-color: red;
+            box-shadow: 0 0 5px rgba(255, 0, 0, 0.6);
+        }
+
     </style>
 </head>
 
@@ -59,6 +81,7 @@
             </select>
 
             <label>Student Type:</label>
+
             <label>
                 <input type="radio" name="InternorExtern" value="extern"> Extern
             </label>
