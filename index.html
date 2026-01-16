@@ -83,17 +83,32 @@
 
             <br>
 
-            <form action="submit-form.php" method="POST" onsubmit="return confirm('Do you really want to submit the form?');">
-            <input type="submit" value="Submit">
-            </form>
+            <button type="submit" onclick="return confirmSubmit()" class="submit-btn">Submit</button>
+            <button type="button" onclick="confirmReset()" class="reset-btn">Reset</button>
 
-            <form action="reset-form.php" method="POST" onsreset="return confirm('Do you really want to reset the form?');">
-            <input type="reset" value="Reset">
-            </form>
         </form>
     </div>
+    <script>
+        function confirmSubmit() {
+            if (window.confirm("Are you sure you want to submit this form?")) {
+                return true;
+            } 
+            else {
+                return false;
+            }
+        }
 
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <script>
+                                                        
+        function confirmReset() {
+            if (window.confirm("Are you sure you want to reset all form fields?")) {
+                document.getElementById("myForm").reset();
+            }
+            else {                                            
+                return false;
+            }
+        }
+        
+
         document.addEventListener("DOMContentLoaded", function () {
             const fields = document.querySelectorAll(
                 "input:not([type=radio]):not([type=submit]):not([type=reset]), textarea, select"
