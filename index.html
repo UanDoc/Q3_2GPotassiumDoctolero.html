@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500&family=Cormorant+Garamond:wght@600&display=swap" rel="stylesheet">
+    <title>Uan's 2nd graded</title>
+    <link rel="icon" type="image/x-icon" href="">
+    <link rel="stylesheet" href = "/index.css">
+
+</head>
+<body> 
+
+    <div class = "container">
+        <form>
+            <label for="StudentID">Student's ID:</label><br>
+            <input type="number" id="StudentID" name="StudentID"><br>
+
+            <label for="Fullname">Full name:</label><br>
+            <input type="text" id="Fullname" name="Fullname"><br>
+
+            <label for="Bday">Full name:</label><br>
+            <input type="date" id="Bday" name="Bday"><br>
+
+            <label for="Email">Email address:</label><br>
+            <input type="email" id="Email" name="Email"><br>
+
+            <label for="PN">Phone number:</label><br>
+            <input type="text" id="PN" name="PN"><br>
+
+            
+            <label for="fruits">Choose a fruit:</label>
+            <select id="fruits" name="fruits">
+                <option value="">-- Select an option --</option>
+                <option value="apple">Apple</option>
+                <option value="banana">Banana</option>
+                <option value="mango">Mango</option>
+                <option value="orange">Orange</option>
+            </select>
+
+    
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+
+    <script>
+
+        const dropdown = document.getElementById('fruits');
+        const output = document.getElementById('output');
+
+        // Event listener for selection change
+        dropdown.addEventListener('change', function() {
+            if (this.value) {
+                output.textContent = `You selected: ${this.options[this.selectedIndex].text}`;
+            } else {
+                output.textContent = '';
+            }
+        });
+
+    </script>
+
+
+</body>
+</html>

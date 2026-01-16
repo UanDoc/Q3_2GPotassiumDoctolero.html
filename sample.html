@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Drop-down List Example</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        label {
+            font-weight: bold;
+        }
+        select {
+            padding: 5px;
+            font-size: 14px;
+        }
+        .output {
+            margin-top: 15px;
+            font-style: italic;
+            color: green;
+        }
+    </style>
+</head>
+<body>
+
+    <label for="fruits">Choose a fruit:</label>
+    <select id="fruits" name="fruits">
+        <option value="">-- Select an option --</option>
+        <option value="apple">Apple</option>
+        <option value="banana">Banana</option>
+        <option value="mango">Mango</option>
+        <option value="orange">Orange</option>
+    </select>
+
+    <div class="output" id="output"></div>
+
+    <script>
+
+        const dropdown = document.getElementById('fruits');
+        const output = document.getElementById('output');
+
+        // Event listener for selection change
+        dropdown.addEventListener('change', function() {
+            if (this.value) {
+                output.textContent = `You selected: ${this.options[this.selectedIndex].text}`;
+            } else {
+                output.textContent = '';
+            }
+        });
+    </script>
+
+</body>
+</html>
