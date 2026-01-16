@@ -65,11 +65,25 @@
                 <textarea id="textarea" name="textarea">
             </textarea><br>
     
-            <input type="submit" value="Submit">
-            <input type="reset" value="Reset Form">
+            <input type="submit" value="Submit" onclick="showConfirmation()">
+            <input type="reset" value="Reset Form" onclick="showConfirmation()">
 
         </form>
     </div>
+
+    <script>
+        function showConfirmation() {
+            // confirm() returns true if OK is clicked, false if Cancel is clicked
+            let userConfirmed = confirm("Are you sure you want to proceed?");
+            
+            if (userConfirmed) {
+                alert("You clicked OK. Proceeding...");
+                // Place your action code here (e.g., form submission, deletion)
+            } else {
+                alert("You clicked Cancel. Action aborted.");
+            }
+        }
+    </script>
 
 </body>
 </html>
