@@ -48,12 +48,19 @@
             box-shadow: 0 0 5px rgba(255, 0, 0, 0.6);
         }
 
+        button {
+            padding: 6px 10px;
+            margin-right: 5px;
+            cursor: pointer;
+        }
     </style>
 </head>
 
 <body>
     <div class="container">
+        <!-- No action attribute so page stays visible -->
         <form id="studentForm">
+
             <label for="StudentID">Student's ID:</label>
             <input type="number" id="StudentID" name="StudentID">
 
@@ -81,7 +88,6 @@
             </select>
 
             <label>Student Type:</label>
-
             <label>
                 <input type="radio" name="InternorExtern" value="extern"> Extern
             </label>
@@ -106,33 +112,63 @@
 
             <br>
 
-            <button type="submit" onclick="return confirmSubmit()" class="submit-btn">Submit</button>
-            <button type="button" onclick="confirmReset()" class="reset-btn">Reset</button>
+            <button type="submit">Submit</button>
+            <button type="button" onclick="confirmReset()">Reset</button>
+            <button type="button" onclick="viewSignUps()">View Signups</button>
 
         </form>
     </div>
+
     <script>
-        function confirmSubmit() {
-            if (window.confirm("Are you sure you want to submit this form?")) {
-                return true;
-            } 
-            else {
-                return false;
-            }
-        }
-
-                                                        
-        function confirmReset() {
-            if (window.confirm("Are you sure you want to reset all form fields?")) {
-                document.getElementById("myForm").reset();
-            }
-            else {                                            
-                return false;
-            }
-        }
-        
-
         document.addEventListener("DOMContentLoaded", function () {
+
+            const form = document.getElementById("studentForm");
+
+            // SUBMIT EVENT
+            form.addEventListener("submit", function (event) {
+                event.preventDefault(); // Prevent page reload
+
+                if (!confirm("Are you sure you want to submit this form?")) {
+                    return;
+                }
+
+                // Check existing localStorage data
+                let signUps = localStorage.getItem("signUps");
+
+                if (signUps) {
+                    signUps = JSON.parse(signUps);
+                } else {
+                    signUps = []; // Initialize if none exists
+                }
+
+                // Get selected radio value
+                const studentType = document.querySelector('input[name="InternorExtern"]:checked');
+
+                // Create student object
+                const studentData = {
+                    studentID: document.getElementById("StudentID").value,
+                    fullName: document.getElementById("Fullname").value,
+                    birthday: document.getElementById("Bday").value,
+                    email: document.getElementById("Email").value,
+                    phone: document.getElementById("Phone").value,
+                    gradeLevel: document.getElementById("GL").value,
+                    studentType: studentType ? studentType.value : "",
+                    club: document.getElementById("Clubs").value,
+                    reason: document.getElementById("Reason").value
+                };
+
+                // Add to array
+                signUps.push(studentData);
+
+                // Save back to localStorage
+                localStorage.setItem("signUps", JSON.stringify(signUps));
+
+                alert("Signup saved successfully!");
+
+                form.reset();
+            });
+
+            // Validation on blur
             const fields = document.querySelectorAll(
                 "input:not([type=radio]):not([type=submit]):not([type=reset]), textarea, select"
             );
@@ -146,7 +182,20 @@
                     }
                 });
             });
+
         });
+
+        // Confirm Reset
+        function confirmReset() {
+            if (confirm("Are you sure you want to reset all form fields?")) {
+                document.getElementById("studentForm").reset();
+            }
+        }
+
+        // Go to viewSignUps.html
+        function viewSignUps() {
+            window.location.href = "viewSignUps.html";
+        }
     </script>
 
 </body>
